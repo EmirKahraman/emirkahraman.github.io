@@ -5,61 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Welcome to my website.">
   <meta name="author" content="Emir Kahraman">
-  <title>MyWebsite</title>
+  <title>My Terminal Powered Website</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Raleway" as="style">
-  <link rel="stylesheet" href="/css/terminal.css"> <!-- Terminal styling -->
-  <link rel="stylesheet" href="/css/header.css">   <!-- Header styling -->
+  <link rel="stylesheet" href="assets/css/terminal.css">
+
   <style>
     body, h1, h2, h3, h4, h5, h6 { font-family: "Raleway", sans-serif; }
     body, html {
       height: 100%;
       line-height: 1.8;
-      background-color: #101010; /* Dark gray background */
+      background-color: #101010;
       color: #FFFFFF;
     }
     .w3-bar .w3-button { padding: 16px; }
-    .w3-bar { background-color: #000000; /* Black navbar */ }
+    .w3-bar { background-color: #000000; }
   </style>
 </head>
 <body>
 
   <!-- Navbar (sit on top) -->
   <header class="w3-top">
-    <nav class="w3-bar w3-flat-turquoise w3-card" id="myNavbar">
-      <!-- Optionally, you can call terminal commands on click -->
-      <a href="javascript:void(0)" onclick="processCommand('goHome')" class="w3-bar-item w3-button w3-wide" aria-label="Homepage">MAIN</a>
+    <nav class="w3-bar w3-flat-turquoise w3-card" id="navbar">
+      <a href="#home" onclick="processCommand('nav home')" class="w3-bar-item w3-button w3-wide" aria-label="Homepage" data-section="home">MAIN</a>
       <div class="w3-right w3-hide-small">
-        <a href="javascript:void(0)" onclick="processCommand('goAbout')" class="w3-bar-item w3-button" aria-label="About">ABOUT</a>
-        <a href="javascript:void(0)" onclick="processCommand('goWork')" class="w3-bar-item w3-button" aria-label="Our Work"><i class="fa fa-th"></i> WORK</a>
+        <a href="#about" onclick="processCommand('nav about')" class="w3-bar-item w3-button" aria-label="About" data-section="about">ABOUT</a>
+        <a href="#work" onclick="processCommand('nav work')" class="w3-bar-item w3-button" aria-label="Our Work" data-section="work"><i class="fa fa-th"></i> WORK</a>
       </div>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" aria-label="Open sidebar">
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="processCommand('sidebar open')" aria-label="Open sidebar">
         <i class="fa fa-bars"></i>
       </a>
     </nav>
   </header>
 
-  <!-- Sidebar on small screens when clicking the menu icon -->
-  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar" aria-label="Sidebar Navigation">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-    <a href="javascript:void(0)" onclick="processCommand('goAbout'); w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-    <a href="javascript:void(0)" onclick="processCommand('goWork'); w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <!-- Sidebar on small screens -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="sidebar" aria-label="Sidebar Navigation">
+    <a href="javascript:void(0)" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#about" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button" data-section="about">ABOUT</a>
+    <a href="#work" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button" data-section="work">WORK</a>
   </nav>
 
-  <!-- Header with full-height image -->
-  <header class="w3-display-container w3-metro-darken" id="home">
-    <img src="/images/home.jpg" alt="Header Image" class="w3-image w3-grayscale-max" style="width:100%; height:100%; object-fit: cover;">
+  <!-- Home Section -->
+  <section class="w3-display-container w3-metro-darken" id="home">
+    <img src="assets/images/home.jpg" alt="Header Image" class="w3-image w3-grayscale-max" style="width:100%; height:100%; object-fit: cover;">
     <div class="w3-display-left w3-text-white" style="padding:48px">
-      <!-- Header text where the typewriter effect will occur -->
-      <span class="w3-jumbo w3-hide-small header-terminal-text" id="typing"></span>
+      <span class="w3-jumbo w3-hide-small header-terminal-text" id="header-text">Welcome to My Website</span>
       <span class="header-cursor"></span><br>
-      <span class="w3-xxlarge w3-hide-large w3-hide-medium header-terminal-text" id="typing-mobile"></span>
+      <span class="w3-xxlarge w3-hide-large w3-hide-medium header-terminal-text">Welcome to My Website</span>
       <span class="header-cursor"></span><br>
       <span class="w3-large">Stop wasting valuable time with projects that just aren't you.</span>
     </div> 
-  </header>
+  </section>
 
   <!-- About Section -->
   <section class="w3-container" style="padding:128px 16px" id="about">
@@ -89,27 +87,36 @@
     </div>
   </section>
 
-  <!-- Terminal Section -->
-  <div class="w3-container w3-light-grey" style="padding:128px 16px">
+  <!-- Work Section -->
+  <section class="w3-container w3-light-grey" style="padding:128px 16px" id="work">
     <div class="w3-row-padding">
       <div class="w3-col m6">
-        <h3>We know design.</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-        <p><a href="javascript:void(0)" onclick="processCommand('goWork')" class="w3-button w3-black"><i class="fa fa-th"></i> View Our Works</a></p>
+        <h3 id="terminal-title">We know design.</h3>
+        <p id="terminal-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+        <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"></i> View Our Works</a></p>
       </div>
-
+    
       <!-- Terminal container -->
       <div class="w3-col m6">
-        <div class="terminal" id="terminal">
-        <script src="/js/terminal.js"></script>
+        <div class="terminal-window" id="terminal">
+          <div class="terminal-body">
+            <div class="terminal-content" id="output"></div>
+            <div class="terminal-input-line">
+              <span class="prompt">emirkah@github:~$</span>
+              <input type="text" class="terminal-input" autocomplete="off" autofocus>
+            </div>
+          </div>
         </div>
+        <script src="assets/js/terminal.js"></script>
       </div>
+      
+
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer class="w3-center w3-black w3-padding-64">
-    <a href="javascript:void(0)" onclick="processCommand('goHome')" class="w3-button w3-light-grey">
+    <a href="#home" class="w3-button w3-light-grey">
       <i class="fa fa-arrow-up w3-margin-right"></i>To the top
     </a>
   </footer>
