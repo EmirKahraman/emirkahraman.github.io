@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addOutput('Website Terminal v1.0 - Type "help" for commands');
     processCommand('time');
     processCommand('date');
-    processCommand('openmenu projects');
     processCommand('nav home');
     
     terminal.addEventListener('click', () => input.focus());

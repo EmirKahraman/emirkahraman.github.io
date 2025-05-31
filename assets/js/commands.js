@@ -148,7 +148,8 @@ const commands = {
                 .join(', ')
         },
         examples: [
-            "openmenu projects - Show all projects",
+            "openmenu engineering - Show all engineering related projects",
+            "openmenu programming - Show all code related projects",
             "openmenu articles - Show some articles"
         ],
         execute: ([category]) => {
