@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     processCommand('time');
     processCommand('date');
     processCommand('openmenu projects');
-    //processCommand('nav home');
+    processCommand('nav home');
     
     terminal.addEventListener('click', () => input.focus());
     
