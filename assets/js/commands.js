@@ -107,7 +107,10 @@ const commands = {
         execute: ([section]) => {
             const target = document.getElementById(section);
             if (!target) throw new Error(`Section not found: ${section}`);
-            target.scrollIntoView({ behavior: 'smooth' });
+            // Execute scroll after timeout
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }, 100); // 1 second delay
             return `Navigating to ${section} section...`;
         }
     },
