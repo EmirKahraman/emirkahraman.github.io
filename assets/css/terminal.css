@@ -8,57 +8,54 @@
 }
 
 .terminal-window {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #0f0;
-    font-family: monospace;
-    padding: 15px;
-    border-radius: 5px;
-    height: 240px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-}
-
-.terminal-body {
-  background-color: var(--terminal-bg);
-  color: var(--terminal-text);
-  padding: 15px;
-  height: 400px;
-  overflow-y: auto;
+  height: 320px; /* Fixed height or use min-height */
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.terminal-content {
+.terminal-body {  /* Terminal body is the main content area */
   flex: 1;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  margin-bottom: 10px;
+  scroll-behavior: smooth;
+  font-family: monospace;
+  background-color: var(--terminal-bg);
+  color: var(--terminal-green);
+  padding: 0; /* Remove padding to maximize space */
+  word-break: break-all;
 }
 
-.terminal-input-line {
+.terminal-content { /* terminal-content is the area for previous terminal outputs */
+  margin-top: 4px;
+  margin-left: 8px;
+  
+}
+
+.terminal-input-line {  /* terminal-input-line is the part that houses prompt and terminal-input classes */
   display: flex;
   align-items: center;
-  padding: 5px 0;
 }
 
-.prompt {
+.prompt { /* prompt is a graphical representation of where you are inside the terminal-input-line */
   color: var(--terminal-green);
-  margin-right: 8px;
-  white-space: nowrap;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
-.terminal-input {
+.terminal-input { /* terminal-input is the input field where user types commands */
   background: transparent;
   border: none;
-  color: var(--terminal-text);
+  color: inherit;
   font-family: inherit;
   font-size: inherit;
-  flex: 1;
   outline: none;
-  caret-color: var(--terminal-green);
+  width: calc(100% - 20px); /* Adjust width to fit within the terminal */
 }
 
-.command { color: var(--terminal-blue); }
+.command { color: var(--terminal-green); }a
 .error { color: var(--terminal-red); }
 .success { color: var(--terminal-green); }
 .warning { color: var(--terminal-yellow); }

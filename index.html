@@ -7,9 +7,11 @@
   <meta name="author" content="Emir Kahraman">
   <title>My Terminal Powered Website</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Raleway" as="style">
+ 
   <link rel="stylesheet" href="assets/css/terminal.css">
 
   <style>
@@ -17,107 +19,221 @@
     body, html {
       height: 100%;
       line-height: 1.8;
-      background-color: #101010;
-      color: #FFFFFF;
     }
-    .w3-bar .w3-button { padding: 16px; }
-    .w3-bar { background-color: #000000; }
   </style>
 </head>
+
 <body>
-
   <!-- Navbar (sit on top) -->
-  <header class="w3-top">
-    <nav class="w3-bar w3-flat-turquoise w3-card" id="navbar">
-      <a href="#home" onclick="processCommand('nav home')" class="w3-bar-item w3-button w3-wide" aria-label="Homepage" data-section="home">MAIN</a>
-      <div class="w3-right w3-hide-small">
-        <a href="#about" onclick="processCommand('nav about')" class="w3-bar-item w3-button" aria-label="About" data-section="about">ABOUT</a>
-        <a href="#work" onclick="processCommand('nav work')" class="w3-bar-item w3-button" aria-label="Our Work" data-section="work"><i class="fa fa-th"></i> WORK</a>
-      </div>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="processCommand('sidebar open')" aria-label="Open sidebar">
-        <i class="fa fa-bars"></i>
-      </a>
-    </nav>
-  </header>
-
-  <!-- Sidebar on small screens -->
-  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="sidebar" aria-label="Sidebar Navigation">
-    <a href="javascript:void(0)" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-    <a href="#about" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button" data-section="about">ABOUT</a>
-    <a href="#work" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button" data-section="work">WORK</a>
-  </nav>
+  <section>
+    <header class="w3-top" style="background-color: #000000; color: #FFFFFF;">
+      <nav class="w3-bar w3-card" id="navbar">
+        <a href="#home" onclick="processCommand('nav home')" class="w3-bar-item w3-button w3-wide w3-padding-16" aria-label="Homepage" data-section="home">MAIN</a>
+        <div class="w3-right w3-hide-small">
+          <a href="#about" onclick="processCommand('nav about')" class="w3-bar-item w3-button w3-padding-16" aria-label="About" data-section="about"><i class=""></i>ABOUT</a>
+          <a href="#work" onclick="processCommand('nav work')" class="w3-bar-item w3-button w3-padding-16" aria-label="Work" data-section="work"><i class=""></i> WORK</a>
+          <a href="#terminal" onclick="processCommand('nav terminal')" class="w3-bar-item w3-button w3-padding-16" aria-label="Terminal" data-section="terminal"><i class=""></i> TERMINAL</a>
+          </div>
+          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium w3-padding-16" onclick="processCommand('sidebar toggle')"><i class="fa fa-bars"></i></a>
+        </nav>
+      </header>
+      
+      <!-- Sidebar on small screens -->
+      <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large " style="background-color: #000000; color: #FFFFFF; display:none" id="sidebar" aria-label="Sidebar Navigation">
+        <a href="javascript:void(0)" onclick="processCommand('sidebar close')" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+        <a href="#about" onclick="processCommand('sidebar close'), processCommand('nav about')" class="w3-bar-item w3-button" data-section="about">ABOUT</a>
+        <a href="#work" onclick="processCommand('sidebar close'), processCommand('nav work')" class="w3-bar-item w3-button" data-section="work">WORK</a>
+        <a href="#terminal" onclick="processCommand('sidebar close'), processCommand('nav terminal')" class="w3-bar-item w3-button" data-section="terminal">TERMINAL</a>
+      </nav>
+  </section>
 
   <!-- Home Section -->
-  <section class="w3-display-container w3-metro-darken" id="home">
+  <section class="w3-display-container" style="background-color: transparent; color: #FFFFFF" id="home">
     <img src="assets/images/home.jpg" alt="Header Image" class="w3-image w3-grayscale-max" style="width:100%; height:100%; object-fit: cover;">
-    <div class="w3-display-left w3-text-white" style="padding:48px">
-      <span class="w3-jumbo w3-hide-small header-terminal-text" id="header-text">Welcome to My Website</span>
-      <span class="header-cursor"></span><br>
-      <span class="w3-xxlarge w3-hide-large w3-hide-medium header-terminal-text">Welcome to My Website</span>
-      <span class="header-cursor"></span><br>
-      <span class="w3-large">Stop wasting valuable time with projects that just aren't you.</span>
+    <div class="w3-display-left w3-margin-left">
+      <span class="w3-jumbo" id="header-text">EMIR KAHRAMAN</span>
+      <br>
+      <span class="w3-large">Electrical Engineering Student, Developer, Researcher</span>
     </div> 
   </section>
 
   <!-- About Section -->
-  <section class="w3-container" style="padding:128px 16px" id="about">
-    <h3 class="w3-center">ABOUT ME</h3>
-    <p class="w3-center w3-large">Key features of our company</p>
+  <section class="w3-container" style="background-color: #101010; color: #FFFFFF; padding:128px 16px" id="about">
+    <div class="header2" style="margin-bottom: 128px;">
+      <h2 class="w3-center"><span class="w3-wide">ABOUT</span></h2>
+      <p class="w3-center">Electrical Engineering student at Yıldız Technical University passionate about electronics, testing technologies, and innovative solutions that bridge hardware and software. Hands-on electrical engineering experience from university labs and industry</p>
+    </div>
+
     <div class="w3-row-padding w3-center" style="margin-top:64px">
+      <!-- Row 1: Core Engineering Skills -->
       <div class="w3-quarter">
-        <i class="fa fa-desktop w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large">Responsive</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <i class="fa fa-microchip w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Hardware</p>
+        <p>Circuit design, PCB development, and component selection</p>
       </div>
       <div class="w3-quarter">
-        <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large">Passion</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <i class="fa fa-bolt w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Power Systems</p>
+        <p>Grid analysis, renewable energy integration, and power quality</p>
       </div>
       <div class="w3-quarter">
-        <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large">Design</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <i class="fa fa-flask w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Testing</p>
+        <p>Electrical safety tests, material analysis, compliance verification</p>
       </div>
       <div class="w3-quarter">
-        <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large">Support</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <i class="fa fa-cogs w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Automation</p>
+        <p>Industrial control systems and PLC programming</p>
+      </div>
+    </div>
+
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+      <!-- Row 2: Development & Technical Skills -->
+      <div class="w3-quarter">
+        <i class="fa fa-laptop w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Web Dev</p>
+        <p>Full-stack development with JavaScript/HTML/CSS</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-code w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Programming</p>
+        <p>Python, Java, C for engineering applications and automation</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-calculator w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Simulation</p>
+        <p>MATLAB, Simulink, and PSIM for system modeling</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-database w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Data Analysis</p>
+        <p>Processing test results and measurement data</p>
       </div>
     </div>
   </section>
+  
+  <!-- Works Section -->
+  <section class="w3-container" style="background-color: #FFFFFF; color: #000000; padding:128px 16px" id="work">
+    <div class="w3-content" style="max-width:900px">
 
-  <!-- Work Section -->
-  <section class="w3-container w3-light-grey" style="padding:128px 16px" id="work">
+      <div class="header2" style="margin-bottom: 64px;">
+        <h2 class="w3-center"><span class="w3-wide">MY WORK</span></h2>
+        <p class="w3-center">Engineering solutions and software development projects</p>
+      </div>
+
+      <div class="w3-row w3-center w3-card" style="font-size: medium; margin-bottom: 5px">
+        <a href="javascript:void(0)" onclick="processCommand('openmenu engineering')" id="engineeringLink">
+          <div class="w3-col s4 tablink w3-padding-16 w3-hover-light-grey">Engineering Projects</div>
+        </a>
+        <a href="javascript:void(0)" onclick="processCommand('openmenu code')">
+          <div class="w3-col s4 tablink w3-padding-16 w3-hover-light-grey">Programming Projects</div>
+        </a>
+        <a href="javascript:void(0)" onclick="processCommand('openmenu articles')">
+          <div class="w3-col s4 tablink w3-padding-16 w3-hover-light-grey">Technical Articles</div>
+        </a>
+      </div>
+
+      <!-- Engineering Projects -->
+      <div id="engineering" class="w3-container menu w3-padding-48 w3-card">
+        <div class="w3-padding-16">
+          <h5>Smart Home Energy Management System</h5>
+          <div class="w3-row-padding" style="margin:8px 0">
+            <span class="w3-tag w3-black">Python</span>
+            <span class="w3-tag w3-black">IoT</span>
+            <span class="w3-tag w3-black">Energy Optimization</span>
+          </div>
+          <p>Designed to optimize power consumption and reduce energy costs by integrating renewable energy sources with intelligent load shifting algorithms.</p>
+          <a href="https://github.com/EmirKahraman/Smart-Home" target="_blank" class="w3-button w3-light-grey w3-small">
+            <i class="fa fa-github w3-margin-right"></i> View on GitHub
+          </a>
+        </div>
+
+        <div class="w3-padding-16" style="margin-top:32px">
+          <h5>Photovoltaic System Modeling</h5>
+          <div class="w3-row-padding" style="margin:8px 0">
+            <span class="w3-tag w3-black">MATLAB</span>
+            <span class="w3-tag w3-black">Genetic Algorithms</span>
+            <span class="w3-tag w3-black">Renewable Energy</span>
+          </div>
+          <p>Models PV cells using one-diode and two-diode configurations with Real-Coded Genetic Algorithm parameter estimation. Compares simulated I-V/P-V characteristics with real-world data under varying environmental conditions.</p>
+          <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
+            <p><i class="fa fa-lock"></i> Currently in development (private repository)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Programming Projects -->
+      <div id="code" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+        <div class="w3-padding-16">
+          <h5>Terminal Portfolio Website</h5>
+          <div class="w3-row-padding" style="margin:8px 0">
+            <span class="w3-tag w3-black">JavaScript</span>
+            <span class="w3-tag w3-black">HTML/CSS</span>
+            <span class="w3-tag w3-black">Interactive UI</span>
+          </div>
+          <p>This very website - a responsive portfolio with terminal-style navigation built from scratch. Features custom commands and keyboard interaction.</p>
+          <a href="https://github.com/EmirKahraman/emirkahraman.github.io" target="_blank" class="w3-button w3-light-grey w3-small">
+            <i class="fa fa-github w3-margin-right"></i> View Source Code
+          </a>
+        </div>
+
+        <div class="w3-padding-16" style="margin-top:32px">
+          <h5>Data Analysis Toolkit</h5>
+          <div class="w3-row-padding" style="margin:8px 0">
+            <span class="w3-tag w3-black">Python</span>
+            <span class="w3-tag w3-black">Pandas</span>
+            <span class="w3-tag w3-black">Matplotlib</span>
+          </div>
+          <p>Collection of scripts for processing electrical measurement data, generating visualizations, and automating test result analysis.</p>
+          <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
+            <p><i class="fa fa-lock"></i> Internal tools (private repository)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Articles -->
+      <div id="articles" class="w3-container menu w3-padding-48 w3-card" style="display:none">
+        <div class="w3-panel w3-light-grey w3-padding-16">
+          <h5 class="w3-center">Coming Soon</h5>
+          <p class="w3-center">Technical articles and research papers will be shared here</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Terminal Section -->
+  <section class="w3-container" style="background-color: #F0F0F0; padding:128px 16px" id="terminal">
     <div class="w3-row-padding">
       <div class="w3-col m6">
-        <h3 id="terminal-title">We know design.</h3>
-        <p id="terminal-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-        <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"></i> View Our Works</a></p>
+        <h3><span class="w3-wide">THE TERMINAL</h3>
+        <p>This site includes a custom command-line interface that control the site itself?, built with HTML, CSS and JavaScript</p>
+        </br>
+        <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th w3-margin-right"></i> View Our Works</a></p>
       </div>
     
       <!-- Terminal container -->
-      <div class="w3-col m6">
-        <div class="terminal-window" id="terminal">
-          <div class="terminal-body">
-            <div class="terminal-content" id="output"></div>
+      <div class="w3-col m6 w3-padding-16">
+        <div class="terminal-window" id="terminal-window">
+          <div class="terminal-body" id="terminal-body">
+            <div class="terminal-content" id="terminal-content"></div>
             <div class="terminal-input-line">
-              <span class="prompt">emirkah@github:~$</span>
-              <input type="text" class="terminal-input" autocomplete="off" autofocus>
+              <span class="prompt">$</span>
+              <input class="terminal-input" id="terminal-input" autocomplete="off" autofocus>
             </div>
           </div>
         </div>
         <script src="assets/js/terminal.js"></script>
+        <script src="assets/js/commands.js"></script>
       </div>
-      
-
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="w3-center w3-black w3-padding-64">
-    <a href="#home" class="w3-button w3-light-grey">
-      <i class="fa fa-arrow-up w3-margin-right"></i>To the top
+  <footer class="w3-center w3-padding-48" style="background-color: #000000;">
+    <a href="#home" onclick="processCommand('nav home')" class="w3-button w3-light-grey">
+      <i class="fa fa-arrow-up w3-margin-right" aria-hidden="true"></i>To the top
     </a>
   </footer>
 
