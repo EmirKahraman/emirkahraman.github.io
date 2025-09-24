@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ICE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #000;
+      text-align: center;
+      padding: 2em;
+    }
+    h1 {
+      color: red;
+      font-size: 2.5em;
+      margin-bottom: 1em;
+    }
+    .field {
+      font-size: 1.8em;
+      margin: 0.5em 0;
+      font-weight: bold;
+    }
+    .label {
+      font-size: 0.8em;
+      font-weight: normal;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>ICE – Medical ID</h1>
+  <div id="out">No data found in QR</div>
+
+  <script>
+    const hash = location.hash.slice(1);
+    if (hash) {
+      try {
+        const decoded = atob(hash);
+        const data = JSON.parse(decoded);
+
+        let html = "";
+        if (data.n) html += `<div class="field">${data.n}<div class="label">Name</div></div>`;
+        if (data.b) html += `<div class="field">${data.b}<div class="label">Blood Type</div></div>`;
+        if (data.a) html += `<div class="field">${data.a}<div class="label">Allergies</div></div>`;
+        if (data.i) html += `<div class="field">${data.i}<div class="label">Emergency Contact</div></div>`;
+
+        document.getElementById("out").innerHTML = html || "No valid data";
+      } catch {
+        document.getElementById("out").textContent = "Invalid QR data";
+      }
+    }
+  </script>
+</body>
+</html>

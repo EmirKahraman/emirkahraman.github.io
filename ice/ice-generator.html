@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ICE QR Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  
+  <!-- Phone input formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    h1 {
+      color: red;
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 2em;
+    }
+
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.6em;
+      font-size: 1em;
+      margin-top: 0.3em;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1em;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+
+    canvas {
+      display: block;
+      margin: 1em auto;
+    }
+
+    #link {
+      word-break: break-all;
+      text-align: center;
+      display: block;
+      margin-top: 1em;
+    }
+
+    .blood-container {
+      display: flex;
+      gap: 0.5em;
+    }
+
+    .blood-container select {
+      flex: 1;
+    }
+
+    .iti {
+      width: 100%;
+    }
+
+    .iti input {
+      width: 100%;
+      padding: 0.6em;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    .iti__flag {
+      top: 0.6em;
+      left: 0.6em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Create ICE QR Code</h1>
+
+  <form id="credForm">
+    <label>Name
+      <input name="n" placeholder="Full Name" required>
+    </label>
+
+    <label>Blood Type</label>
+    <div class="blood-container">
+      <select name="abo" required>
+        <option value="">-- Select --</option>
+        <option>A</option>
+        <option>B</option>
+        <option>AB</option>
+        <option>O</option>
+      </select>
+      <select name="rh" required>
+        <option value="">-- Select --</option>
+        <option>+</option>
+        <option>-</option>
+      </select>
+    </div>
+    
+    <label>Allergies
+      <input name="a" placeholder="e.g. Penicillin, Nuts">
+    </label>
+
+    <label>Emergency Contact
+      <input id="phone" name="i" type="tel" placeholder="Enter phone" required>
+    </label>
+
+    <button type="submit">Generate QR</button>
+  </form>
+
+  <h2>QR Code</h2>
+  <canvas id="qr"></canvas>
+  <a id="link" href="#">Link will appear here</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+  <script>
+    const phoneInput = document.querySelector("#phone"); // your DOM element
+    const iti = window.intlTelInput(phoneInput, {
+      initialCountry: "tr",
+      nationalMode: true,
+      formatOnDisplay: true,
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+    });
+
+    // Clear or set custom validity while typing
+    phoneInput.addEventListener('input', () => {
+      phoneInput.setCustomValidity( iti.isValidNumber() ? "" : "Please enter a valid phone number!" );
+        if (!iti.isValidNumber()) { 
+          phoneInput.reportValidity();  // shows tooltip if invalid
+        return; 
+      }
+    });
+
+    document.getElementById('credForm').onsubmit = (e) => {
+      e.preventDefault();
+
+      const f = new FormData(e.target);
+      const blood = f.get("abo") + f.get("rh");
+      const phoneNumber = iti.getNumber();
+
+      const data = {
+        n: f.get("n"),
+        b: blood,
+        a: f.get("a"),
+        i: phoneNumber
+      };
+
+      const encoded = btoa(JSON.stringify(data));
+      const url = location.origin + "/ice/#" + encoded;
+
+      document.getElementById("link").textContent = url;
+      document.getElementById("link").href = url;
+
+      QRCode.toCanvas(document.getElementById("qr"), url, { errorCorrectionLevel: 'H' });
+    };
+  </script>
+
+
+</body>
+</html>
